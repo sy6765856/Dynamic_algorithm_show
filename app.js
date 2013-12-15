@@ -1,9 +1,14 @@
 var http = require('http');
-var head = '<head><script type="text/javascript" src="./js/draw.js"></script></head>';
-console.log(head);
+
+var modulesPath = './modules/';
+
+var head = require(modulesPath + 'head.js'),
+    body = require(modulesPath + 'body.js'),
+    draw = require(modulesPath + 'draw.js');
+
 var app = function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(head);
-	res.end('<body>Hello  dsd</body>');
+	res.write(head.content);
+	res.end(body.content);
 };
 http.createServer(app).listen(8000);
